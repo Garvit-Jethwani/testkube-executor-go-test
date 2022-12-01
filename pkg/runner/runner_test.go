@@ -10,7 +10,7 @@ import (
 func TestRun(t *testing.T) {
 
 	t.Run("successful result", func(t *testing.T) {
-		runner := NewRunner()
+		runner, _ := NewRunner()
 		res, err := runner.Run(testkube.Execution{
 			Content: &testkube.TestContent{
 				Uri: "https://testkube.io",
@@ -22,7 +22,7 @@ func TestRun(t *testing.T) {
 	})
 
 	t.Run("failed 404 result", func(t *testing.T) {
-		runner := NewRunner()
+		runner, _ := NewRunner()
 		res, err := runner.Run(testkube.Execution{
 			Content: &testkube.TestContent{
 				Uri: "https://testkube.io/some-non-existing-uri-blablablabl",
@@ -35,7 +35,7 @@ func TestRun(t *testing.T) {
 	})
 
 	t.Run("network connection issues returns errors", func(t *testing.T) {
-		runner := NewRunner()
+		runner, _ := NewRunner()
 		_, err := runner.Run(testkube.Execution{
 			Content: &testkube.TestContent{
 				Uri: "blabla://non-existing-uri",

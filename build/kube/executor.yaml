@@ -1,12 +1,11 @@
 apiVersion: executor.testkube.io/v1
 kind: Executor
 metadata:
-  name: example-executor
+  name: go-test-executor
   namespace: testkube
 spec:
-  executor_type: job
-  image: kubeshop/testkube-example-executor:0.0.1 # pass your repository and tag
+  image: elithepoorboy/go-test:latest  # pass your repository and tag
   types:
   - example/test
-  volume_mount_path: /mnt/artifacts-storage
-  volume_quantity: 10Gix
+  # volume_mount_path: /var/tmp/Roost/ebsvolume/testkube-minio
+  # volume_quantity: 10Gix

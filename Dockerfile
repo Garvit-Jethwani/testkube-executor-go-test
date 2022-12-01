@@ -8,8 +8,8 @@ ENV GOOS=linux
 RUN cd cmd/agent;go build -o /runner -mod mod -a .
 
 FROM alpine
-RUN apk --no-cache add ca-certificates git
+RUN apk --no-cache add ca-certificates git go 
 WORKDIR /root/
 COPY --from=0 /runner /bin/runner
+# COPY go /usr/local/bin/go
 ENTRYPOINT ["/bin/runner"]
-
